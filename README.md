@@ -30,8 +30,8 @@ Laravel Sail provides a simple command-line interface for interacting with Larav
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
-   cd path/to/app
+   git clone https://github.com/jjuanrivvera99/board-way
+   cd board-way
    ```
 
 2. **Start Laravel Sail**:
