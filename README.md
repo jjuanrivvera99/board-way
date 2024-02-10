@@ -4,6 +4,8 @@
 
 This application is a simple yet powerful Kanban board, designed to facilitate basic project management capabilities. Built with Laravel 10 and Livewire, it features a dynamic, real-time user experience for managing boards, lists (referred to as rows), and cards without full page reloads.
 
+<img src="./public/images/board-way-view.png" alt="BoardWay Demo">
+
 ## Key Features
 
 - **User Authentication**: Secure login and registration system.
