@@ -4,6 +4,8 @@
 
 This application is a simple yet powerful Kanban board, designed to facilitate basic project management capabilities. Built with Laravel 10 and Livewire, it features a dynamic, real-time user experience for managing boards, lists (referred to as rows), and cards without full page reloads.
 
+<img src="./public/images/board-way-view.png" alt="BoardWay Demo">
+
 ## Key Features
 
 - **User Authentication**: Secure login and registration system.
@@ -30,8 +32,8 @@ Laravel Sail provides a simple command-line interface for interacting with Larav
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
-   cd path/to/app
+   git clone https://github.com/jjuanrivvera99/board-way
+   cd board-way
    ```
 
 2. **Start Laravel Sail**:
@@ -45,7 +47,7 @@ Laravel Sail provides a simple command-line interface for interacting with Larav
        -u "$(id -u):$(id -g)" \
        -v $(pwd):/opt \
        -w /opt \
-       laravelsail/php80-composer:latest \
+       laravelsail/php83-composer:latest \
        composer install --ignore-platform-reqs
    ```
    Then, you can start Sail:
