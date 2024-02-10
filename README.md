@@ -47,7 +47,7 @@ Laravel Sail provides a simple command-line interface for interacting with Larav
        -u "$(id -u):$(id -g)" \
        -v $(pwd):/opt \
        -w /opt \
-       laravelsail/php80-composer:latest \
+       laravelsail/php83-composer:latest \
        composer install --ignore-platform-reqs
    ```
    Then, you can start Sail:
