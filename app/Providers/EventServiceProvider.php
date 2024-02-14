@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Listeners\AssignUserRole;
 use App\Listeners\CreateDefaultBoard;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;

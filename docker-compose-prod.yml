@@ -47,10 +47,11 @@ services:
         depends_on:
             - redis
     redis:
-        image: 'redis:alpine'
+        image: redis/redis-stack:latest
         restart: always
         ports:
             - '${FORWARD_REDIS_PORT:-6379}:6379'
+            - '8001:8001'
         volumes:
             - 'app-redis:/data'
         networks:
@@ -62,14 +63,17 @@ services:
                 - ping
             retries: 3
             timeout: 5s
-    soketi:
-        image: 'quay.io/soketi/soketi:latest-16-alpine'
+    socketio:
+        image: board-way/socket-io
+        build:
+            context: ./docker/socketio
+            dockerfile: Dockerfile
+        volumes:
+            - ./socket-io-server.js:/app/server.js
         restart: always
-        environment:
-            SOKETI_DEBUG: '1'
-            SOKETI_METRICS_SERVER_PORT: '9601'
+        depends_on:
+            - redis
         ports:
-            - '${SOKETI_PORT:-6001}:6001'
-            - '${SOKETI_METRICS_SERVER_PORT:-9601}:9601'
+            - "3000:3000"
         networks:
             - app-network

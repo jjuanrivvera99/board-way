@@ -53,11 +53,23 @@
 
 @script
 <script>
-    Echo.private('row.{{ $id }}')
-        .listen('RowUpdated', (e) => {
+    const prefix = `boardway_database_private-row`;
+    const id = '{{ $id }}';
+
+    io.on('*', (message) => {
+        const channel = message;
+
+        if (channel.startsWith(prefix)) {
+            const rowId = channel.split('.')[1];
+
+            if (rowId !== id) {
+                return;
+            }
+
             $wire.dispatch('refresh-row', {
-                id: e.row.id
+                id: rowId
             });
-        });
+        }
+    });
 </script>
 @endscript

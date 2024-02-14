@@ -64,13 +64,24 @@
 
 @script
 <script>
-    Echo.private('board.{{ $id }}')
-        .listen('BoardUpdated', (e) => {
-            console.log('BoardUpdated', e.board.id);
+    const prefix = `boardway_database_private-board`;
+    const id = '{{ $id }}';
+
+    io.on('*', (message) => {
+        const channel = message;
+
+        if (channel.startsWith(prefix)) {
+            const boardId = channel.split('.')[1];
+
+            if (boardId !== id) {
+                return;
+            }
+
             $wire.dispatch('refresh-board', {
-                id: e.board.id
+                id: boardId
             });
-        });
+        }
+    });
 </script>
 @endscript
 
