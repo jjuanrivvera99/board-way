@@ -108,11 +108,11 @@ Our Docker setup includes several services essential for a modern Laravel applic
 - **Image**: Utilizes `redis:alpine` for a lightweight setup.
 - **Ports**: Exposes `FORWARD_REDIS_PORT` for local access.
 
-#### `soketi` Service
+#### `socketio` Service
 
 - **Purpose**: Handles real-time WebSocket communication.
-- **Image**: `quay.io/soketi/soketi:latest-16-alpine`.
-- **Ports**: Exposes the WebSocket server and metrics server port for real-time communication and monitoring.
+- **Image**: Utilizes the Dockerfile on docker/socket-io.
+- **Ports**: Exposes the WebSocket server port for real-time communication.
 
 ### Running the Application
 
