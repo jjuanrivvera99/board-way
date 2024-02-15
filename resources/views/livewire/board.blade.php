@@ -64,21 +64,16 @@
 
 @script
 <script>
-    const prefix = `boardway_database_private-board`;
-    const id = '{{ $id }}';
+    const eventPrefix = `boardway_database_private-`;
 
     io.on('*', (message) => {
         const channel = message;
 
-        if (channel.startsWith(prefix)) {
-            const boardId = channel.split('.')[1];
+        if (channel.startsWith(eventPrefix)) {
+            const [ table, id ] = channel.split('-')[1].split('.');
 
-            if (boardId !== id) {
-                return;
-            }
-
-            $wire.dispatch('refresh-board', {
-                id: boardId
+            $wire.dispatch(`refresh-${table}`, {
+                id: id
             });
         }
     });

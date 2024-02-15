@@ -49,31 +49,3 @@
         </form>
     </div>
 </div>
-
-@script
-<script>
-    const prefix = `boardway_database_private-card`;
-    const id = '{{ $id }}';
-    const rowId = '{{ $row_id }}';
-
-    io.on('*', (message) => {
-        const channel = message;
-
-        if (channel.startsWith(prefix)) {
-            const cardId = channel.split('.')[1];
-
-            if (cardId !== id) {
-                return;
-            }
-
-            $wire.dispatch('refresh-card', {
-                id: id
-            });
-
-            $wire.dispatch('refresh-row', {
-                id: rowId
-            });
-        }
-    });
-</script>
-@endscript
